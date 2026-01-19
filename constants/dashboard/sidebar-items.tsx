@@ -1,34 +1,40 @@
-import { Users, LayoutDashboard, NotebookPen, ClipboardMinus, Bell } from "lucide-react"
+import {
+  Bell,
+  ClipboardMinus,
+  LayoutDashboard,
+  NotebookPen,
+  Users,
+} from 'lucide-react';
 
 export const items = [
   {
-    title: "Dashboard",
-    url: "/dashboard",
+    title: 'Dashboard',
+    url: '/dashboard',
     icon: LayoutDashboard,
   },
   {
-    title: "Grupos",
-    url: "#",
+    title: 'Grupos',
+    url: '/dashboard/groups',
     icon: NotebookPen,
   },
   {
-    title: "Estudantes",
-    url: "#",
+    title: 'Estudantes',
+    url: '/dashboard/students',
     icon: Users,
   },
   {
-    title: "Mentores",
-    url: "/dashboard/mentors",
+    title: 'Mentores',
+    url: '/dashboard/mentors',
     icon: Users,
   },
   {
-    title: "Reportes",
-    url: "#",
+    title: 'Reportes',
+    url: '/dashboard/reports',
     icon: ClipboardMinus,
   },
   {
-    title: "Notificações",
-    url: "#",
+    title: 'Notificações',
+    url: '/dashboard/notifications',
     icon: Bell,
-  }
-]
+  },
+];

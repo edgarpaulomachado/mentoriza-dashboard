@@ -1,14 +1,20 @@
-import { DashboardSidebar } from "@/components/dashboard/dashboard-sidebar"
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import { DashboardSidebar } from '@/components/dashboard/dashboard-sidebar';
+import DashboardHeader from '@/components/dashboard/header';
+import { SidebarProvider } from '@/components/ui/sidebar';
 
-
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <SidebarProvider>
       <DashboardSidebar />
-      <main>
+
+      <main className='w-full min-h-dvh'>
+        <DashboardHeader />
         {children}
       </main>
     </SidebarProvider>
-  )
+  );
 }
