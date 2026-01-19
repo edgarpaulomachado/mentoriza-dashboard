@@ -32,7 +32,11 @@ export function Logo({ isPrimary = false, size = 'md', className }: LogoProps) {
         priority={isPrimary}
       />
 
-      {isPrimary && <span className='text-lg tracking-tight'>Mentoriza</span>}
+      {isPrimary && (
+        <span className='text-2xl tracking-tight text-primary font-bold'>
+          Mentoriza
+        </span>
+      )}
     </div>
   );
 }
