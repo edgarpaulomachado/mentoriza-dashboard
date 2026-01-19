@@ -16,6 +16,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { LoginFormData, loginSchema } from '@/schemas/auth/login-schema';
+import { LockKeyhole, Mail } from 'lucide-react';
 
 export function LoginForm() {
   const form = useForm<LoginFormData>({
@@ -36,6 +37,10 @@ export function LoginForm() {
         onSubmit={form.handleSubmit(onSubmit)}
         className='space-y-6 w-full max-w-sm'
       >
+        <div className='flex flex-col gap-3 mb-8'>
+          <h1 className='text-4xl font-bold'>Welcome Back</h1>
+          <p className='text-zinc-500'>Sign in to your dashboard</p>
+        </div>
         <FormField
           control={form.control}
           name='email'
@@ -43,7 +48,11 @@ export function LoginForm() {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder='exemplo@email.com' {...field} />
+                <Input
+                  leftIcon={<Mail size={18} strokeWidth={1.5} />}
+                  placeholder='exemplo@email.com'
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -57,7 +66,12 @@ export function LoginForm() {
             <FormItem>
               <FormLabel>Senha</FormLabel>
               <FormControl>
-                <Input type='password' placeholder='••••••••' {...field} />
+                <Input
+                  leftIcon={<LockKeyhole size={18} strokeWidth={1.5} />}
+                  type='password'
+                  placeholder='••••••••'
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -67,7 +81,7 @@ export function LoginForm() {
         <div className='text-right'>
           <Link
             href='/forgot-password'
-            className='text-sm text-primary hover:underline'
+            className='text-sm text-primary hover:underline font-medium'
           >
             Esqueceste a senha?
           </Link>

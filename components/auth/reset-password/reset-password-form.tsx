@@ -19,6 +19,7 @@ import {
   ResetPasswordFormData,
   resetPasswordSchema,
 } from '@/schemas/auth/reset-password-schema';
+import { LockKeyhole } from 'lucide-react';
 
 export function ResetPasswordForm() {
   const searchParams = useSearchParams();
@@ -45,6 +46,13 @@ export function ResetPasswordForm() {
         onSubmit={form.handleSubmit(onSubmit)}
         className='space-y-6 w-full max-w-sm'
       >
+        <div className='flex flex-col gap-3 mb-8'>
+          <h1 className='text-4xl font-bold'>Reset Your Password</h1>
+          <p className='text-zinc-500'>
+            Create a new password for your account. Make sure it’s strong and
+            easy for you to remember.
+          </p>
+        </div>
         <FormField
           control={form.control}
           name='password'
@@ -53,6 +61,7 @@ export function ResetPasswordForm() {
               <FormLabel>Nova senha</FormLabel>
               <FormControl>
                 <Input
+                  leftIcon={<LockKeyhole size={18} strokeWidth={1.5} />}
                   type='password'
                   {...field}
                   placeholder='Digite a sua nova senha'
@@ -71,6 +80,7 @@ export function ResetPasswordForm() {
               <FormLabel>Confirmar senha</FormLabel>
               <FormControl>
                 <Input
+                  leftIcon={<LockKeyhole size={18} strokeWidth={1.5} />}
                   type='password'
                   {...field}
                   placeholder='Confirme a tua nova senha'

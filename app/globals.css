@@ -17,7 +17,7 @@
 
   --font-body: var(--font-plus-jakarta);
 
-  --border: oklch(0.92 0.004 286.32);
+  --border: #dedee6;
 
   --primary-light: #c27aff;
   --primary: #9810fa;
@@ -147,9 +147,9 @@
   --color-black-light: var(--black-light);
   --color-black-dark: var(--black-dark);
 
-  --gradient-primary: linear-gradient(135deg, #c27aff 0%, #9810fa 100%);
-  --gradient-red: linear-gradient(135deg, #ff6467 0%, #fb2c36 100%);
-  --gradient-black: linear-gradient(135deg, #52525c 0%, #18181b 100%);
+  --gradient-primary: linear-gradient(to bottom, #c27aff 0%, #9810fa 100%);
+  --gradient-red: linear-gradient(to bottom, #ff6467 0%, #fb2c36 100%);
+  --gradient-black: linear-gradient(to bottom, #52525c 0%, #18181b 100%);
 }
 
 body {
