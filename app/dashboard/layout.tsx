@@ -10,7 +10,6 @@ export default function DashboardLayout({
   return (
     <SidebarProvider>
       <DashboardSidebar />
-
       <main className='w-full min-h-dvh'>
         <DashboardHeader />
         {children}

@@ -6,7 +6,7 @@ import {
   Users,
 } from 'lucide-react';
 
-export const items = [
+export const itemsSidebar = [
   {
     title: 'Dashboard',
     url: '/dashboard',

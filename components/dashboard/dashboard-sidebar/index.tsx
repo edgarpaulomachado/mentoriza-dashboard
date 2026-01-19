@@ -11,7 +11,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
-import { items } from "@/constants/dashboard/sidebar-items";
+import { itemsSidebar } from "@/constants/dashboard/sidebar-items";
 
 
 export function DashboardSidebar() {
@@ -22,12 +22,12 @@ export function DashboardSidebar() {
           <SidebarGroupLabel>Navegação</SidebarGroupLabel>
           <SidebarGroupContent className="mt-10">
             <SidebarMenu>
-              {items.map((item) => (
+              {itemsSidebar.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild className="w-53 h-12.5 rounded-sm gap-3">
                     <a href={item.url}>
                       <item.icon />
-                      <span>{item.title}</span>
+                      <span className="font-medium text-sm">{item.title}</span>
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
