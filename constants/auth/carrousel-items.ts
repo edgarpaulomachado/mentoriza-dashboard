@@ -18,7 +18,7 @@ export const loginCarrouselItems: LoginCarrouselItem[] = [
     title: 'Controle e aprove relatórios com facilidade',
     description:
       'Receba relatórios, analise conteúdos, deixe feedbacks e aprove ou rejeite com poucos cliques, tudo em tempo real.',
-    cover: '/login/carrousel/03.jpg',
+    cover: '/login/carrousel/02.jpg',
   },
   {
     id: 2,

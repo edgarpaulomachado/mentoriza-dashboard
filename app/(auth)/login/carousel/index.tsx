@@ -26,7 +26,7 @@ export function CarouselAuthLogin() {
     <div className='relative w-full h-dvh lg:flex hidden'>
       <Carousel
         opts={{ loop: true }}
-        plugins={[Autoplay({ delay: 4000 })]}
+        plugins={[Autoplay({ delay: 2000 })]}
         setApi={setApi}
         className='w-full h-dvh'
       >
@@ -41,13 +41,13 @@ export function CarouselAuthLogin() {
                   className='w-full object-contain h-auto'
                   alt={title}
                 />
-                <div className='absolute bottom-0 w-full bg-linear-to-t from-zinc-900  to-transparent z-10 h-screen' />
+                <div className='absolute bottom-0 w-full bg-linear-to-t from-black-dark  to-transparent z-10 h-screen' />
 
-                <div className='absolute bottom-31 z-20 w-full max-w-110.5 flex flex-col gap-4 px-4'>
-                  <h4 className='text-[28px] font-extrabold leading-10.5 text-white'>
+                <div className='absolute bottom-31 z-20 w-full max-w-120.5 flex flex-col gap-4 px-4'>
+                  <h4 className='text-4xl font-bold leading-10.5 text-white'>
                     {title}
                   </h4>
-                  <p className='text-[16px] font-medium leading-6 tracking-[0.2px] text-white'>
+                  <p className='text-[16px] font-normal leading-6 tracking-[0.2px] text-white'>
                     {description}
                   </p>
                 </div>
