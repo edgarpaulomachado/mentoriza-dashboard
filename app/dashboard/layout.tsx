@@ -1,6 +1,6 @@
-import { DashboardSidebar } from '@/components/dashboard/dashboard-sidebar';
-import DashboardHeader from '@/components/dashboard/header/header';
-import { SidebarProvider } from '@/components/ui/sidebar';
+import { DashboardSidebar } from "@/components/dashboard/dashboard-sidebar";
+import DashboardHeader from "@/components/dashboard/header/header";
+import { SidebarProvider } from "@/components/ui/sidebar";
 
 export default function DashboardLayout({
   children,
@@ -10,7 +10,7 @@ export default function DashboardLayout({
   return (
     <SidebarProvider>
       <DashboardSidebar />
-      <main className='w-full min-h-dvh'>
+      <main className="w-full min-h-dvh">
         <DashboardHeader />
         {children}
       </main>
