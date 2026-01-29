@@ -1,12 +1,25 @@
+import type { LucideIcon } from "lucide-react";
 import {
-  Bell,
-  ClipboardMinus,
+  Cog ,
+  FileSpreadsheet,
   LayoutDashboard,
-  NotebookPen,
+  GraduationCap,
   Users,
 } from "lucide-react";
 
-export const itemsSidebar = [
+export interface SidebarItem {
+  title: string;
+  icon: LucideIcon;
+  url?: string;
+  children?: {
+    title: string;
+    url: string;
+    icon?: LucideIcon;
+  }[];
+}
+
+
+export const itemsSidebar: SidebarItem[] = [
   {
     title: "Dashboard",
     url: "/dashboard",
@@ -15,7 +28,7 @@ export const itemsSidebar = [
   {
     title: "Grupos",
     url: "/dashboard/groups",
-    icon: NotebookPen,
+    icon: Users,
   },
   {
     title: "Estudantes",
@@ -25,16 +38,25 @@ export const itemsSidebar = [
   {
     title: "Mentores",
     url: "/dashboard/mentors",
-    icon: Users,
+    icon: GraduationCap,
   },
   {
     title: "Reportes",
     url: "/dashboard/reports",
-    icon: ClipboardMinus,
+    icon: FileSpreadsheet,
   },
   {
-    title: "Notificações",
-    url: "/dashboard/notifications",
-    icon: Bell,
+    title: "Configurações",
+    icon: Cog,
+    children: [
+      {
+        title: "Indicadores",
+        url: "/dashboard/configurations/indicators",
+      },
+      {
+        title: "Submissões",
+        url: "/dashboard/configurations/submissions",
+      }
+    ]
   },
 ];
