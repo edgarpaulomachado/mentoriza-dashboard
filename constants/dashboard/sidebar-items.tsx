@@ -1,6 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 import {
-  Cog ,
+  Cog,
   FileSpreadsheet,
   LayoutDashboard,
   GraduationCap,
@@ -17,7 +17,6 @@ export interface SidebarItem {
     icon?: LucideIcon;
   }[];
 }
-
 
 export const itemsSidebar: SidebarItem[] = [
   {
@@ -56,7 +55,7 @@ export const itemsSidebar: SidebarItem[] = [
       {
         title: "Submissões",
         url: "/dashboard/configurations/submissions",
-      }
-    ]
+      },
+    ],
   },
 ];

@@ -1,3 +1,3 @@
 export default function Submissions() {
-    return <div></div>;
-};
+  return <div></div>;
+}

@@ -49,16 +49,13 @@ export function DashboardSidebar() {
                     (item.url !== "/dashboard" &&
                       pathname.startsWith(item.url!));
 
-                const isOpen =
-                  openMenu === item.title || isParentActive;
+                const isOpen = openMenu === item.title || isParentActive;
 
                 if (hasChildren) {
                   return (
                     <SidebarMenuItem key={item.title}>
                       <SidebarMenuButton
-                        onClick={() =>
-                          setOpenMenu(isOpen ? null : item.title)
-                        }
+                        onClick={() => setOpenMenu(isOpen ? null : item.title)}
                         className={cn(
                           "h-12.5 rounded-sm gap-3 font-medium justify-between",
                           isParentActive
@@ -68,9 +65,7 @@ export function DashboardSidebar() {
                       >
                         <div className="flex items-center gap-3">
                           <item.icon className="h-5 w-5" />
-                          <span className="text-sm">
-                            {item.title}
-                          </span>
+                          <span className="text-sm">{item.title}</span>
                         </div>
 
                         <ChevronDown
@@ -84,8 +79,7 @@ export function DashboardSidebar() {
                       {isOpen && (
                         <div className="ml-8 mt-2 space-y-1">
                           {item.children!.map((child) => {
-                            const isActive =
-                              pathname === child.url;
+                            const isActive = pathname === child.url;
 
                             return (
                               <SidebarMenuButton
@@ -102,9 +96,7 @@ export function DashboardSidebar() {
                                   {child.icon && (
                                     <child.icon className="h-4 w-4" />
                                   )}
-                                  <span className="text-sm">
-                                    {child.title}
-                                  </span>
+                                  <span className="text-sm">{child.title}</span>
                                 </Link>
                               </SidebarMenuButton>
                             );
@@ -128,9 +120,7 @@ export function DashboardSidebar() {
                     >
                       <Link href={item.url!}>
                         <item.icon className="h-5 w-5" />
-                        <span className="text-sm">
-                          {item.title}
-                        </span>
+                        <span className="text-sm">{item.title}</span>
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
