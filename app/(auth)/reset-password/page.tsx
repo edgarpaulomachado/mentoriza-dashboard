@@ -1,5 +1,8 @@
+'use client';
+
+import {Suspense} from 'react';
 import AuthHeader from "@/components/auth/header/auth-header";
-import { ResetPasswordForm } from "@/components/auth/reset-password/reset-password-form";
+import ResetPasswordClient from './reset-password-client';
 
 export default function ResetPasswordPage() {
   return (
@@ -9,7 +12,9 @@ export default function ResetPasswordPage() {
       </div>
       <div className="flex min-h-screen items-center justify-center">
         <div className="w-full max-w-sm">
-          <ResetPasswordForm />
+          <Suspense fallback={<p>A carregar...</p>}>
+            <ResetPasswordClient />
+          </Suspense>
         </div>
       </div>
     </div>

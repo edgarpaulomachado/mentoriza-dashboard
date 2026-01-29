@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useCallback, useState } from 'react';
-import { useDropzone } from 'react-dropzone';
-import { CloudUpload } from 'lucide-react';
+import { useCallback, useState } from "react";
+import { useDropzone } from "react-dropzone";
+import { CloudUpload } from "lucide-react";
 
 export default function PdfDropzone() {
   const [file, setFile] = useState<File | null>(null);
@@ -10,16 +10,16 @@ export default function PdfDropzone() {
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     const pdf = acceptedFiles[0];
-    if (pdf && pdf.type === 'application/pdf') {
+    if (pdf && pdf.type === "application/pdf") {
       setFile(pdf);
     } else {
-      alert('Por favor, envie apenas ficheiros PDF.');
+      alert("Por favor, envie apenas ficheiros PDF.");
     }
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
-    accept: { 'application/pdf': ['.pdf'] },
+    accept: { "application/pdf": [".pdf"] },
     maxFiles: 1,
   });
 
@@ -29,15 +29,15 @@ export default function PdfDropzone() {
     setLoading(true);
 
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append("file", file);
 
-    await fetch('/api/upload', {
-      method: 'POST',
+    await fetch("/api/upload", {
+      method: "POST",
       body: formData,
     });
 
     setLoading(false);
-    alert('Upload concluído!');
+    alert("Upload concluído!");
   }
 
   return (
@@ -45,7 +45,7 @@ export default function PdfDropzone() {
       <div
         {...getRootProps()}
         className={`border-2 border-dashed p-8 text-center cursor-pointer rounded-lg
-          ${isDragActive ? 'border-blue-500 bg-blue-50' : 'border-gray-300'}`}
+          ${isDragActive ? "border-blue-500 bg-blue-50" : "border-gray-300"}`}
       >
         <input {...getInputProps()} />
 
@@ -53,9 +53,13 @@ export default function PdfDropzone() {
           <p className="font-medium">📄 {file.name}</p>
         ) : (
           <div className="w-auto h-auto flex flex-col items-center gap-2">
-            <CloudUpload color={'#9810FA'} />
-            <p className="text-sm font-medium text-primary">Select CSV file to upload</p>
-            <p className="text-xs font-normal text-[#999999]">or darg and drop it there</p>
+            <CloudUpload color={"#9810FA"} />
+            <p className="text-sm font-medium text-primary">
+              Select CSV file to upload
+            </p>
+            <p className="text-xs font-normal text-[#999999]">
+              or darg and drop it there
+            </p>
           </div>
         )}
       </div>
@@ -66,7 +70,7 @@ export default function PdfDropzone() {
           disabled={loading}
           className="mt-4 w-full bg-blue-600 text-white py-2 rounded-md"
         >
-          {loading ? 'Enviando...' : 'Enviar PDF'}
+          {loading ? "Enviando..." : "Enviar PDF"}
         </button>
       )}
     </div>
