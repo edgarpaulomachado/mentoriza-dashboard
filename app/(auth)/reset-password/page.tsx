@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import {Suspense} from 'react';
+import { Suspense } from "react";
 import AuthHeader from "@/components/auth/header/auth-header";
-import ResetPasswordClient from './reset-password-client';
+import ResetPasswordClient from "./reset-password-client";
 
 export default function ResetPasswordPage() {
   return (
