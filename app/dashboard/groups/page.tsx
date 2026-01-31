@@ -1,68 +1,25 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Plus, Search } from "lucide-react";
-import { columns, Payment } from "./columns";
-import { DataTable } from "./data-table";
+'use client';
 
-async function getData(): Promise<Payment[]> {
-  return [
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-  ];
-}
+import GroupsButtons from '@/components/dashboard/groups-buttons/buttons';
+import { Button } from '@/components/ui/button';
+import { FileSearchCorner } from 'lucide-react';
+import React from 'react';
 
-export default async function GroupsPage() {
-  const data = await getData();
+export default function GroupsPage() {
+
   return (
-    <div className="p-8 w-full">
-      <div className="flex justify-end mb-11">
-        <Button variant={"outline"}>
-          Adicionar Grupo
-          <Plus></Plus>
-        </Button>
-      </div>
-      <section className="bg-zinc-50 p-3 rounded-xl flex justify-between mb-8 items-center">
-        <div>
-          <Label>Pesquisar</Label>
-          <Input
-            className="border-none focus:border-none shadow-none w-80 mt-2 p-0 "
-            placeholder="Pesquise por grupos aqui"
-          ></Input>
-        </div>
-        <Button>
-          <Search></Search>
-          Pesquisar
-        </Button>
-      </section>
-      <div>
-        <h1 className="text-xl font-bold">Groups Table</h1>
-      </div>
+    <div className="w-full h-dhvh flex flex-col items-center justify-start pt-4">
+      <GroupsButtons />
 
-      <div className="container mx-auto py-10">
-        <DataTable columns={columns} data={data} />
+      <div className="w-74.75 h-41.75 flex flex-col justify-center items-center mt-30">
+        <FileSearchCorner className="w-10 h-10"/>
+
+        <div className="mt-5">
+          <p className="text-sm font-medium text-center">No records found</p>
+          <p className="text-sm font-normal text-[#999999] text-center">There are no records available at the moment</p>
+        </div>
+
+        <Button className="w-36 h-10.5 mt-5">Generate Groups</Button>
       </div>
     </div>
   );
