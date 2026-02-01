@@ -29,11 +29,11 @@ export function DashboardSidebar() {
   return (
     <Sidebar className="border-r">
       <SidebarContent>
-        <SidebarHeader>
+        <SidebarHeader className="mt-3">
           <Logo isPrimary />
         </SidebarHeader>
 
-        <SidebarGroup>
+        <SidebarGroup className="mt-8">
           <SidebarGroupLabel>Navegação</SidebarGroupLabel>
 
           <SidebarGroupContent className="mt-4">

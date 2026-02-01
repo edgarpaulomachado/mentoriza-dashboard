@@ -9,17 +9,16 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          "bg-primary text-white hover:opacity-90",
+        default: "bg-primary text-white hover:opacity-90 cursor-pointer",
 
         destructive:
           "bg-[image:var(--gradient-red)] text-white hover:opacity-90",
 
         outline:
-          "bg-transparent text-primary border border-primary hover:opacity-90",
+          "bg-transparent text-primary border border-primary hover:opacity-90 cursor-pointer",
 
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80 cursor-pointer",
 
         ghost: "hover:bg-accent hover:text-accent-foreground",
 
