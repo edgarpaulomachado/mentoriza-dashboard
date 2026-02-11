@@ -26,6 +26,8 @@ export function DashboardSidebar() {
   const pathname = usePathname();
   const [openMenu, setOpenMenu] = useState<string | null>(null);
 
+  const isProfileActive = pathname.startsWith("/dashboard/my-profile");
+
   return (
     <Sidebar className="border-r">
       <SidebarContent>
@@ -33,7 +35,7 @@ export function DashboardSidebar() {
           <Logo isPrimary />
         </SidebarHeader>
 
-        <SidebarGroup className="mt-8">
+        <SidebarGroup className="mt-6">
           <SidebarGroupLabel>Navegação</SidebarGroupLabel>
 
           <SidebarGroupContent className="mt-4">
@@ -57,9 +59,9 @@ export function DashboardSidebar() {
                       <SidebarMenuButton
                         onClick={() => setOpenMenu(isOpen ? null : item.title)}
                         className={cn(
-                          "h-12.5 rounded-sm gap-3 font-medium justify-between",
+                          "h-12.5 rounded-sm gap-3 font-medium justify-between border-l-2 border-transparent transition-all duration-200",
                           isParentActive
-                            ? "bg-sidebar-primary text-sidebar-primary-foreground"
+                            ? "bg-sidebar-primary text-sidebar-primary-foreground border-sidebar-primary"
                             : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
                         )}
                       >
@@ -70,25 +72,25 @@ export function DashboardSidebar() {
 
                         <ChevronDown
                           className={cn(
-                            "h-4 w-4 transition-transform",
+                            "h-4 w-4 transition-transform duration-200",
                             isOpen && "rotate-180",
                           )}
                         />
                       </SidebarMenuButton>
 
                       {isOpen && (
-                        <div className="ml-8 mt-2 space-y-1">
+                        <div className="ml-6 mt-2 space-y-1 border-l border-sidebar-border pl-2">
                           {item.children!.map((child) => {
-                            const isActive = pathname === child.url;
+                            const isActive = pathname.startsWith(child.url);
 
                             return (
                               <SidebarMenuButton
                                 key={child.title}
                                 asChild
                                 className={cn(
-                                  "h-10 gap-3 rounded-sm",
+                                  "h-10 gap-3 rounded-sm border-l-2 border-transparent transition-all duration-200",
                                   isActive
-                                    ? "bg-sidebar-accent text-sidebar-accent-foreground"
+                                    ? "bg-sidebar-accent text-sidebar-accent-foreground border-sidebar-primary"
                                     : "text-sidebar-foreground hover:bg-sidebar-accent",
                                 )}
                               >
@@ -96,7 +98,9 @@ export function DashboardSidebar() {
                                   {child.icon && (
                                     <child.icon className="h-4 w-4" />
                                   )}
-                                  <span className="text-sm">{child.title}</span>
+                                  <span className="text-sm">
+                                    {child.title}
+                                  </span>
                                 </Link>
                               </SidebarMenuButton>
                             );
@@ -112,9 +116,9 @@ export function DashboardSidebar() {
                     <SidebarMenuButton
                       asChild
                       className={cn(
-                        "h-12.5 rounded-sm gap-3 transition-colors font-medium",
+                        "h-12.5 rounded-sm gap-3 transition-all duration-200 font-medium border-l-2 border-transparent",
                         isParentActive
-                          ? "bg-sidebar-primary text-sidebar-primary-foreground"
+                          ? "bg-sidebar-primary text-sidebar-primary-foreground border-sidebar-primary"
                           : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
                       )}
                     >
@@ -134,10 +138,18 @@ export function DashboardSidebar() {
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild className="w-full gap-3">
-              <Link href="/my-profile">
+            <SidebarMenuButton
+              asChild
+              className={cn(
+                "h-12.5 rounded-sm gap-3 transition-all duration-200 font-medium border-l-2 border-transparent",
+                isProfileActive
+                  ? "bg-sidebar-primary text-sidebar-primary-foreground border-sidebar-primary"
+                  : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
+              )}
+            >
+              <Link href="/dashboard/my-profile">
                 <UserIcon className="h-5 w-5" />
-                <span>Meu Perfil</span>
+                <span className="text-sm">Meu Perfil</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>

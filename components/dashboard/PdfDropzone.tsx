@@ -17,15 +17,10 @@ export default function PdfDropzone() {
   const [progress, setProgress] = useState(0);
   const [tableData, setTableData] = useState<TableRow[]>([]);
 
-  // ===============================
-  // Upload automático
-  // ===============================
-
   async function handleUpload(pdf: File) {
     setLoading(true);
     setProgress(0);
 
-    // Simular progress (fetch não dá progresso nativo)
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 90) return prev;
@@ -45,7 +40,6 @@ export default function PdfDropzone() {
     setProgress(100);
     setLoading(false);
 
-    // Simular dados para tabela
     setTableData([
       {
         id: Date.now(),
@@ -54,10 +48,6 @@ export default function PdfDropzone() {
       },
     ]);
   }
-
-  // ===============================
-  // DROPZONE
-  // ===============================
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     const pdf = acceptedFiles[0];
@@ -78,33 +68,33 @@ export default function PdfDropzone() {
 
   return (
     <div className="max-w-md mx-auto space-y-4">
-      {/* DROPZONE */}
-      {!tableData.length && (
-        <div
-          {...getRootProps()}
-          className={`border-2 border-dashed p-8 text-center cursor-pointer rounded-lg transition
-            ${isDragActive ? "border-purple-500 bg-purple-50" : "border-gray-300"}`}
-        >
-          <input {...getInputProps()} />
 
-          {file ? (
-            <p className="font-medium">📄 {file.name}</p>
-          ) : (
-            <div className="flex flex-col items-center gap-2">
-              <CloudUpload color="#9810FA" />
-              <p className="text-sm font-medium text-primary">
-                Select PDF file to upload
-              </p>
-              <p className="text-xs text-[#999999]">or drag and drop it here</p>
-            </div>
-          )}
+      {!tableData.length && (
+        <div className="w-full h-84.5 rounded-lg bg-white p-4">
+          <div
+          {...getRootProps()}
+          className={`w-full border-2 border-dashed p-8 text-center cursor-pointer rounded-lg transition
+            ${isDragActive ? "border-purple-500 bg-purple-50" : "border-gray-300"}`}
+          >
+            <input {...getInputProps()} />
+
+            {file ? (
+              <p className="font-medium">📄 {file.name}</p>
+            ) : (
+              <div className="flex flex-col items-center gap-2">
+                <CloudUpload color="#9810FA" />
+                <p className="text-sm font-medium text-primary">
+                  Select PDF file to upload
+                </p>
+                <p className="text-xs text-[#999999]">or drag and drop it here</p>
+              </div>
+            )}
+          </div>
         </div>
       )}
 
-      {/* PROGRESS BAR */}
       {loading && <Progress value={progress} />}
 
-      {/* TABELA */}
       {tableData.length > 0 && (
         <div className="border rounded-lg overflow-hidden">
           <table className="w-full text-sm">
