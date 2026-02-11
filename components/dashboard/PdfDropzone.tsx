@@ -78,7 +78,6 @@ export default function PdfDropzone() {
 
   return (
     <div className="max-w-md mx-auto space-y-4">
-
       {/* DROPZONE */}
       {!tableData.length && (
         <div
@@ -96,18 +95,14 @@ export default function PdfDropzone() {
               <p className="text-sm font-medium text-primary">
                 Select PDF file to upload
               </p>
-              <p className="text-xs text-[#999999]">
-                or drag and drop it here
-              </p>
+              <p className="text-xs text-[#999999]">or drag and drop it here</p>
             </div>
           )}
         </div>
       )}
 
       {/* PROGRESS BAR */}
-      {loading && (
-        <Progress value={progress} />
-      )}
+      {loading && <Progress value={progress} />}
 
       {/* TABELA */}
       {tableData.length > 0 && (
@@ -131,7 +126,6 @@ export default function PdfDropzone() {
           </table>
         </div>
       )}
-
     </div>
   );
 }

@@ -2,7 +2,15 @@
 
 import GroupsButtons from "@/components/dashboard/groups-buttons/buttons";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { FileSearchCorner, User, Users } from "lucide-react";
 import React, { useState } from "react";
 
@@ -33,46 +41,53 @@ export default function GroupsPage() {
           <DialogHeader>
             <DialogTitle className="text-base font-bold">56 Groups</DialogTitle>
             <DialogDescription className="text-xs font-normal text-[#999999]">
-              After suspending this student, he will not be able to access his account or perform any actions in the application.
+              After suspending this student, he will not be able to access his
+              account or perform any actions in the application.
             </DialogDescription>
           </DialogHeader>
 
           <div className="w-97 h-10 flex justify-between items-center">
-              <Button
-                variant={active === "50/4" ? "default" : "secondary"}
-                onClick={() => setActive("50/4")}
-                className={`w-21.25 h-10 rounded-lg ${active !== "50/4" ? "text-purple-500" : ""}`}>
-                <Users />
-                50/4
-              </Button>
+            <Button
+              variant={active === "50/4" ? "default" : "secondary"}
+              onClick={() => setActive("50/4")}
+              className={`w-21.25 h-10 rounded-lg ${active !== "50/4" ? "text-purple-500" : ""}`}
+            >
+              <Users />
+              50/4
+            </Button>
 
-              <Button
-                variant={active === "50/3" ? "default" : "secondary"}
-                onClick={() => setActive("50/3")}
-                className={`w-21.25 h-10 rounded-lg ${active !== "50/3" ? "text-purple-500" : ""}`}>
-                <Users />
-                50/3
-              </Button>
+            <Button
+              variant={active === "50/3" ? "default" : "secondary"}
+              onClick={() => setActive("50/3")}
+              className={`w-21.25 h-10 rounded-lg ${active !== "50/3" ? "text-purple-500" : ""}`}
+            >
+              <Users />
+              50/3
+            </Button>
 
-              <Button
-                variant={active === "50/5" ? "default" : "secondary"}
-                onClick={() => setActive("50/5")}
-                className={`w-21.25 h-10 rounded-lg ${active !== "50/5" ? "text-purple-500" : ""}`}>
-                <Users />
-                50/5
-              </Button>
+            <Button
+              variant={active === "50/5" ? "default" : "secondary"}
+              onClick={() => setActive("50/5")}
+              className={`w-21.25 h-10 rounded-lg ${active !== "50/5" ? "text-purple-500" : ""}`}
+            >
+              <Users />
+              50/5
+            </Button>
 
-              <Button
-                variant={active === "50/6" ? "default" : "secondary"}
-                onClick={() => setActive("50/6")}
-                className={`w-21.25 h-10 rounded-lg ${active !== "50/6" ? "text-purple-500" : ""}`}>
-                <Users />
-                50/6
-              </Button>
+            <Button
+              variant={active === "50/6" ? "default" : "secondary"}
+              onClick={() => setActive("50/6")}
+              className={`w-21.25 h-10 rounded-lg ${active !== "50/6" ? "text-purple-500" : ""}`}
+            >
+              <Users />
+              50/6
+            </Button>
           </div>
 
           <DialogFooter className="w-full flex justify-end">
-            <Button className="w-36 h-10.5 bg-black text-white mt-5">Generate Groups</Button>
+            <Button className="w-36 h-10.5 bg-black text-white mt-5">
+              Generate Groups
+            </Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

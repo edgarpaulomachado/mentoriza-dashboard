@@ -11,7 +11,6 @@ export default function StudentsPage() {
   return (
     <div className="w-full flex justify-center mt-10">
       <div className="w-98">
-
         {showDropzone && (
           <div className="flex items-center justify-between mb-5">
             <h1 className="text-base font-bold">Upload CSV</h1>
@@ -27,7 +26,6 @@ export default function StudentsPage() {
         ) : (
           <EmptyUploadState onReopen={() => setShowDropzone(true)} />
         )}
-
       </div>
     </div>
   );
@@ -37,7 +35,7 @@ function EmptyUploadState({ onReopen }: { onReopen: () => void }) {
   return (
     <div className="w-74.75 h-42.25 flex flex-col items-center justify-center">
       <FileSearchCorner className="w-10 h-10" />
-      
+
       <div className="mt-5">
         <p className="text-sm font-medium text-center">No records found</p>
         <p className="text-sm font-normal text-[#999999] text-center">
@@ -45,9 +43,12 @@ function EmptyUploadState({ onReopen }: { onReopen: () => void }) {
         </p>
       </div>
 
-      <Button className="w-36.5 h-11 rounded-lg mt-5 flex items-center justify-center gap-2" onClick={onReopen}> 
+      <Button
+        className="w-36.5 h-11 rounded-lg mt-5 flex items-center justify-center gap-2"
+        onClick={onReopen}
+      >
         Upload CSV
-        <CloudUpload /> 
+        <CloudUpload />
       </Button>
     </div>
   );
