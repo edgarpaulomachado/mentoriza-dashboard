@@ -98,9 +98,7 @@ export function DashboardSidebar() {
                                   {child.icon && (
                                     <child.icon className="h-4 w-4" />
                                   )}
-                                  <span className="text-sm">
-                                    {child.title}
-                                  </span>
+                                  <span className="text-sm">{child.title}</span>
                                 </Link>
                               </SidebarMenuButton>
                             );

@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogTrigger,
@@ -9,7 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogFooter,
-} from '@/components/ui/dialog';
+} from "@/components/ui/dialog";
 import {
   Table,
   TableBody,
@@ -17,10 +17,30 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
-import { Input } from '@/components/ui/input';
-import { FileDown, Plus, ClipboardClock, ChartColumnStacked, FileSpreadsheet } from 'lucide-react';
-import { Label } from '@/components/ui/label';
+} from "@/components/ui/table";
+import { Input } from "@/components/ui/input";
+
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
+
+import {
+  FileDown,
+  Plus,
+  ClipboardClock,
+  ChartColumnStacked,
+  FileSpreadsheet,
+  MoreHorizontal,
+  Trash2,
+  Pencil,
+  ClipboardList,
+} from "lucide-react";
+
+import { Label } from "@/components/ui/label";
 
 interface Submission {
   id: number;
@@ -35,9 +55,9 @@ export default function Submissions() {
   const [submissions, setSubmissions] = useState<Submission[]>([]);
 
   const [form, setForm] = useState({
-    deadline: '',
-    stage: '',
-    status: '',
+    deadline: "",
+    stage: "",
+    status: "",
   });
 
   const generateId = () => {
@@ -55,12 +75,30 @@ export default function Submissions() {
     setSubmissions([...submissions, newSubmission]);
 
     setForm({
-      deadline: '',
-      stage: '',
-      status: '',
+      deadline: "",
+      stage: "",
+      status: "",
     });
 
     setOpen(false);
+  };
+
+  const toggleStatus = (id: number) => {
+    setSubmissions((prev) =>
+      prev.map((sub) =>
+        sub.id === id
+          ? {
+              ...sub,
+              status:
+                sub.status === "active" ? "inactive" : "active",
+            }
+          : sub
+      )
+    );
+  };
+
+  const deleteSubmission = (id: number) => {
+    setSubmissions((prev) => prev.filter((sub) => sub.id !== id));
   };
 
   return (
@@ -80,7 +118,7 @@ export default function Submissions() {
             </DialogHeader>
 
             <div className="space-y-2 mt-4">
-              <div className="w-100.75 h-22 flex flex-col gap-3">
+              <div className="flex flex-col gap-3">
                 <Label>Date End</Label>
                 <Input
                   type={form.deadline ? "datetime-local" : "text"}
@@ -93,11 +131,11 @@ export default function Submissions() {
                   onChange={(e) =>
                     setForm({ ...form, deadline: e.target.value })
                   }
-                  leftIcon={<ClipboardClock size={18} strokeWidth={1.5} />}
+                  leftIcon={<ClipboardClock size={18} />}
                 />
               </div>
 
-              <div className="w-100.75 h-22 flex gap-2">
+              <div className="flex gap-2">
                 <div className="flex flex-col gap-3">
                   <Label>Stage</Label>
                   <Input
@@ -106,35 +144,32 @@ export default function Submissions() {
                     onChange={(e) =>
                       setForm({ ...form, stage: e.target.value })
                     }
-                    className="w-49 h-13 outline-none"
-                    leftIcon={<FileSpreadsheet size={18} strokeWidth={1.5} />}
+                    className="w-49 h-13"
+                    leftIcon={<FileSpreadsheet size={18} />}
                   />
                 </div>
 
                 <div className="flex flex-col gap-3">
                   <Label>Status</Label>
                   <Input
-                    placeholder="Status"
+                    placeholder="active / inactive"
                     value={form.status}
                     onChange={(e) =>
                       setForm({ ...form, status: e.target.value })
                     }
-                    className="w-49 h-13 outline-none"
-                    leftIcon={<ChartColumnStacked size={18} strokeWidth={1.5}/>}
+                    className="w-49 h-13"
+                    leftIcon={<ChartColumnStacked size={18} />}
                   />
                 </div>
               </div>
             </div>
 
-            <DialogFooter className="w-full flex justify-end">
-              
-              <Button onClick={handleCreate}  className="w-25.5 h-10.5 bg-black text-white gap-4">
+            <DialogFooter>
+              <Button className="w-31 h-10.5 bg-black text-white gap-2" onClick={handleCreate}>
                 Add
                 <Plus />
               </Button>
-
             </DialogFooter>
-
           </DialogContent>
         </Dialog>
 
@@ -147,35 +182,96 @@ export default function Submissions() {
       <div className="px-3 mt-6">
         <Table>
           <TableHeader>
-            <TableRow>
-              <TableHead>ID</TableHead>
+            <TableRow className="bg-muted">
+              <TableHead className="w-28 flex items-center gap-2">
+                <input type="checkbox" className="w-6 h-6 rounded-lg bg-transparent" />
+                ID
+              </TableHead>
+
               <TableHead>Stage</TableHead>
               <TableHead>Date Time</TableHead>
               <TableHead>Status</TableHead>
+              <TableHead className="text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
 
           <TableBody>
             {submissions.map((submission) => (
               <TableRow key={submission.id}>
-                <TableCell>
-                  {submission.id}
+                <TableCell className="flex items-center gap-3">
+                  <input type="checkbox" className="w-6 h-6 rounded-lg bg-transparent" />
+                  {submission.id.toString().padStart(2, "0")}
                 </TableCell>
-                <TableCell>
-                  {submission.stage}
-                </TableCell>
+
+                <TableCell>{submission.stage}</TableCell>
+
                 <TableCell>
                   {new Date(submission.deadline).toLocaleString()}
                 </TableCell>
+
                 <TableCell>
-                  {submission.status}
+                  <span
+                    className={`px-4 py-1 rounded-full text-sm font-medium
+                      ${
+                        submission.status === "active"
+                          ? "bg-green-100 text-green-700"
+                          : "bg-red-100 text-red-600"
+                      }
+                    `}
+                  >
+                    {submission.status}
+                  </span>
+                </TableCell>
+
+                <TableCell className="text-right">
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="outline" size="icon">
+                        <MoreHorizontal size={18} />
+                      </Button>
+                    </DropdownMenuTrigger>
+
+                    <DropdownMenuContent align="end" className="w-44">
+
+                      <DropdownMenuItem>
+                        <ClipboardList className="mr-2 h-4 w-4" />
+                        See Details
+                      </DropdownMenuItem>
+
+                      <DropdownMenuItem>
+                        <Pencil className="mr-2 h-4 w-4" />
+                        Edit Information
+                      </DropdownMenuItem>
+
+                      <DropdownMenuSeparator />
+
+                      <DropdownMenuItem
+                        onClick={() => toggleStatus(submission.id)}
+                      >
+                        Status: {submission.status}
+                      </DropdownMenuItem>
+
+                      <DropdownMenuSeparator />
+
+                      <DropdownMenuItem
+                        className="text-red-500"
+                        onClick={() =>
+                          deleteSubmission(submission.id)
+                        }
+                      >
+                        <Trash2 className="mr-2 h-4 w-4" />
+                        Delete
+                      </DropdownMenuItem>
+
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 </TableCell>
               </TableRow>
             ))}
 
             {submissions.length === 0 && (
               <TableRow>
-                <TableCell colSpan={4} className="text-center py-6">
+                <TableCell colSpan={5} className="text-center py-6">
                   No submissions created yet
                 </TableCell>
               </TableRow>

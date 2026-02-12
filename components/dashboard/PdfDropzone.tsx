@@ -68,12 +68,11 @@ export default function PdfDropzone() {
 
   return (
     <div className="max-w-md mx-auto space-y-4">
-
       {!tableData.length && (
         <div className="w-full h-84.5 rounded-lg bg-white p-4">
           <div
-          {...getRootProps()}
-          className={`w-full border-2 border-dashed p-8 text-center cursor-pointer rounded-lg transition
+            {...getRootProps()}
+            className={`w-full border-2 border-dashed p-8 text-center cursor-pointer rounded-lg transition
             ${isDragActive ? "border-purple-500 bg-purple-50" : "border-gray-300"}`}
           >
             <input {...getInputProps()} />
@@ -86,7 +85,9 @@ export default function PdfDropzone() {
                 <p className="text-sm font-medium text-primary">
                   Select PDF file to upload
                 </p>
-                <p className="text-xs text-[#999999]">or drag and drop it here</p>
+                <p className="text-xs text-[#999999]">
+                  or drag and drop it here
+                </p>
               </div>
             )}
           </div>

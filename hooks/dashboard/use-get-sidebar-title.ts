@@ -7,7 +7,6 @@ export function useGetSidebarTitle() {
   let dashboardTitle: string | undefined;
 
   itemsSidebar.forEach((item) => {
-
     if (item.url === pathname) {
       dashboardTitle = item.title;
     }
