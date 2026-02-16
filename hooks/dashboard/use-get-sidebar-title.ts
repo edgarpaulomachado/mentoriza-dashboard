@@ -1,5 +1,5 @@
-import { itemsSidebar } from "@/constants/dashboard/sidebar-items";
-import { usePathname } from "next/navigation";
+import { itemsSidebar } from '@/constants/dashboard/sidebar-items';
+import { usePathname } from 'next/navigation';
 
 export function useGetSidebarTitle() {
   const pathname = usePathname();

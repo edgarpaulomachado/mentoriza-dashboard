@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
 interface GroupBoardProps {
   children: ReactNode;
@@ -6,7 +6,7 @@ interface GroupBoardProps {
 
 export default function GroupsBoard({ children }: GroupBoardProps) {
   return (
-    <div className='gap-4 flex flex-row w-300 overflow-x-scroll p-4  '>
+    <div className="gap-4 flex flex-row w-300 overflow-x-scroll p-4  ">
       {children}
     </div>
   );

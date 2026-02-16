@@ -1,6 +1,8 @@
 import { AuthService } from '@/services/auth/index.service';
 import { ResetPasswordPayload } from '@/services/auth/types';
+import { NestErrorResponse } from '@/types/api-error';
 import { useMutation } from '@tanstack/react-query';
+import { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 
@@ -9,14 +11,21 @@ export function useResetPassword() {
   return useMutation({
     mutationFn: (data: ResetPasswordPayload) => AuthService.ResetPassword(data),
     onSuccess: () => {
-      toast.success('Success');
+      toast.success(
+        'Senha redefinida com sucesso! Já pode iniciar sessão com as novas credenciais.'
+      );
+
       router.replace('/login');
     },
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    onError: (error: any) => {
-      console.log(error.response.data.message);
-      const message = error.response.data.message;
-      toast.error(message);
+
+    onError: (error: AxiosError<NestErrorResponse>) => {
+      const message = error.response?.data?.message;
+
+      const formattedMessage = Array.isArray(message)
+        ? message[0]
+        : message || 'Erro inesperado';
+
+      toast.error(formattedMessage);
     },
   });
 }

@@ -1,6 +1,6 @@
 import { ForgotPasswordFormData } from '@/schemas/auth/forgot-password-schema';
 import { LoginFormData } from '@/schemas/auth/login-schema';
-import { API } from '../api';
+import { API } from '@/services/api';
 import { ResetPasswordPayload } from './types';
 
 async function ForgotPassword({ email }: ForgotPasswordFormData) {

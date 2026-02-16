@@ -1,7 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ForgotPasswordFormData } from '@/schemas/auth/forgot-password-schema';
 import { AuthService } from '@/services/auth/index.service';
+import { NestErrorResponse } from '@/types/api-error';
 import { useMutation } from '@tanstack/react-query';
+import { AxiosError } from 'axios';
 import toast from 'react-hot-toast';
 
 export function useForgotPassword() {
@@ -10,12 +11,18 @@ export function useForgotPassword() {
       return AuthService.ForgotPassword(data);
     },
     onSuccess: () => {
-      toast.success('We sent a email for you, check your inbox');
+      toast.success(
+        'Enviamos um e-mail para você. Verifique sua caixa de entrada.'
+      );
     },
-    onError: (error: any) => {
-      console.log(error.response.data.message);
-      const message = error.response.data.message;
-      toast.error(message);
+    onError: (error: AxiosError<NestErrorResponse>) => {
+      const message = error.response?.data?.message;
+
+      const formattedMessage = Array.isArray(message)
+        ? message[0]
+        : message || 'Erro inesperado';
+
+      toast.error(formattedMessage);
     },
   });
 }

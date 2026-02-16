@@ -89,11 +89,10 @@ export default function Submissions() {
         sub.id === id
           ? {
               ...sub,
-              status:
-                sub.status === "active" ? "inactive" : "active",
+              status: sub.status === "active" ? "inactive" : "active",
             }
-          : sub
-      )
+          : sub,
+      ),
     );
   };
 
@@ -165,7 +164,10 @@ export default function Submissions() {
             </div>
 
             <DialogFooter>
-              <Button className="w-31 h-10.5 bg-black text-white gap-2" onClick={handleCreate}>
+              <Button
+                className="w-31 h-10.5 bg-black text-white gap-2"
+                onClick={handleCreate}
+              >
                 Add
                 <Plus />
               </Button>
@@ -184,7 +186,10 @@ export default function Submissions() {
           <TableHeader>
             <TableRow className="bg-muted">
               <TableHead className="w-28 flex items-center gap-2">
-                <input type="checkbox" className="w-6 h-6 rounded-lg bg-transparent" />
+                <input
+                  type="checkbox"
+                  className="w-6 h-6 rounded-lg bg-transparent"
+                />
                 ID
               </TableHead>
 
@@ -199,7 +204,10 @@ export default function Submissions() {
             {submissions.map((submission) => (
               <TableRow key={submission.id}>
                 <TableCell className="flex items-center gap-3">
-                  <input type="checkbox" className="w-6 h-6 rounded-lg bg-transparent" />
+                  <input
+                    type="checkbox"
+                    className="w-6 h-6 rounded-lg bg-transparent"
+                  />
                   {submission.id.toString().padStart(2, "0")}
                 </TableCell>
 
@@ -232,7 +240,6 @@ export default function Submissions() {
                     </DropdownMenuTrigger>
 
                     <DropdownMenuContent align="end" className="w-44">
-
                       <DropdownMenuItem>
                         <ClipboardList className="mr-2 h-4 w-4" />
                         See Details
@@ -255,14 +262,11 @@ export default function Submissions() {
 
                       <DropdownMenuItem
                         className="text-red-500"
-                        onClick={() =>
-                          deleteSubmission(submission.id)
-                        }
+                        onClick={() => deleteSubmission(submission.id)}
                       >
                         <Trash2 className="mr-2 h-4 w-4" />
                         Delete
                       </DropdownMenuItem>
-
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </TableCell>

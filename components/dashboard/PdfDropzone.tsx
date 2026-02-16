@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { Progress } from '@/components/ui/progress';
-import { CloudUpload } from 'lucide-react';
-import { useCallback, useState } from 'react';
-import { useDropzone } from 'react-dropzone';
+import { Progress } from "@/components/ui/progress";
+import { CloudUpload } from "lucide-react";
+import { useCallback, useState } from "react";
+import { useDropzone } from "react-dropzone";
 
 type TableRow = {
   id: number;
@@ -29,10 +29,10 @@ export default function PdfDropzone() {
     }, 200);
 
     const formData = new FormData();
-    formData.append('file', pdf);
+    formData.append("file", pdf);
 
-    await fetch('/api/upload', {
-      method: 'POST',
+    await fetch("/api/upload", {
+      method: "POST",
       body: formData,
     });
 
@@ -44,7 +44,7 @@ export default function PdfDropzone() {
       {
         id: Date.now(),
         fileName: pdf.name,
-        status: 'Processado',
+        status: "Processado",
       },
     ]);
   }
@@ -52,40 +52,40 @@ export default function PdfDropzone() {
   const onDrop = useCallback((acceptedFiles: File[]) => {
     const pdf = acceptedFiles[0];
 
-    if (pdf && pdf.type === 'application/pdf') {
+    if (pdf && pdf.type === "application/pdf") {
       setFile(pdf);
       handleUpload(pdf);
     } else {
-      alert('Por favor, envie apenas ficheiros PDF.');
+      alert("Por favor, envie apenas ficheiros PDF.");
     }
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
-    accept: { 'application/pdf': ['.pdf'] },
+    accept: { "application/pdf": [".pdf"] },
     maxFiles: 1,
   });
 
   return (
-    <div className='max-w-full mx-auto space-y-4'>
+    <div className="max-w-full mx-auto space-y-4">
       {!tableData.length && (
-        <div className='w-full rounded-lg bg-white'>
+        <div className="w-full rounded-lg bg-white">
           <div
             {...getRootProps()}
             className={`w-full border-2 border-dashed p-8 text-center cursor-pointer rounded-lg transition
-            ${isDragActive ? 'border-purple-500 bg-purple-50' : 'border-gray-300'}`}
+            ${isDragActive ? "border-purple-500 bg-purple-50" : "border-gray-300"}`}
           >
             <input {...getInputProps()} />
 
             {file ? (
-              <p className='font-medium'>📄 {file.name}</p>
+              <p className="font-medium">📄 {file.name}</p>
             ) : (
-              <div className='flex flex-col items-center gap-2'>
-                <CloudUpload color='#9810FA' />
-                <p className='text-sm font-medium text-primary'>
+              <div className="flex flex-col items-center gap-2">
+                <CloudUpload color="#9810FA" />
+                <p className="text-sm font-medium text-primary">
                   Select PDF file to upload
                 </p>
-                <p className='text-xs text-[#999999]'>
+                <p className="text-xs text-[#999999]">
                   or drag and drop it here
                 </p>
               </div>
@@ -97,20 +97,20 @@ export default function PdfDropzone() {
       {loading && <Progress value={progress} />}
 
       {tableData.length > 0 && (
-        <div className='border rounded-lg overflow-hidden'>
-          <table className='w-full text-sm'>
-            <thead className='bg-muted'>
+        <div className="border rounded-lg overflow-hidden">
+          <table className="w-full text-sm">
+            <thead className="bg-muted">
               <tr>
-                <th className='text-left p-3'>File Name</th>
-                <th className='text-left p-3'>Status</th>
+                <th className="text-left p-3">File Name</th>
+                <th className="text-left p-3">Status</th>
               </tr>
             </thead>
 
             <tbody>
               {tableData.map((row) => (
-                <tr key={row.id} className='border-t'>
-                  <td className='p-3'>{row.fileName}</td>
-                  <td className='p-3'>{row.status}</td>
+                <tr key={row.id} className="border-t">
+                  <td className="p-3">{row.fileName}</td>
+                  <td className="p-3">{row.status}</td>
                 </tr>
               ))}
             </tbody>
