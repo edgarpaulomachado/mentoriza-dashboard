@@ -12,7 +12,7 @@ interface GroupCardProps {
 
 export default function GroupCard({ children }: GroupCardProps) {
   return (
-    <div className="min-w-[375px] rounded-lg bg-white border border-[#DEDEE6]">
+    <div className="min-w-93.75 rounded-lg bg-white border border-[#DEDEE6]">
       <GroupHeader
         groupName={"Group 1"}
         description={"The future starts now!"}
