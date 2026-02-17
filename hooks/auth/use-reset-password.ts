@@ -1,6 +1,6 @@
 import { AuthService } from '@/services/auth/index.service';
 import { ResetPasswordPayload } from '@/services/auth/types';
-import { NestErrorResponse } from '@/types/api-error';
+import { IErrorResponse } from '@/shared/Interface/IErrorResponse';
 import { useMutation } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
@@ -18,7 +18,7 @@ export function useResetPassword() {
       router.replace('/login');
     },
 
-    onError: (error: AxiosError<NestErrorResponse>) => {
+    onError: (error: AxiosError<IErrorResponse>) => {
       const message = error.response?.data?.message;
 
       const formattedMessage = Array.isArray(message)

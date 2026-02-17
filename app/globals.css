@@ -1,5 +1,5 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -15,8 +15,6 @@
   --black-light: #52525c;
   --black-dark: #18181b;
 
-  --font-body: var(--font-plus-jakarta);
-
   --border: #dedee6;
 
   --primary-light: #c27aff;
@@ -28,6 +26,9 @@
 
   --black-light: #52525c;
   --black-dark: #18181b;
+
+  --stroke: #dedee6;
+  --Gray: #999999;
 
   --font-body: var(--font-plus-jakarta);
 
@@ -93,7 +94,6 @@
 }
 
 @theme inline {
-  --font-family-body: var(--font-body);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -150,12 +150,14 @@
   --gradient-primary: linear-gradient(to bottom, #c27aff 0%, #9810fa 100%);
   --gradient-red: linear-gradient(to bottom, #ff6467 0%, #fb2c36 100%);
   --gradient-black: linear-gradient(to bottom, #52525c 0%, #18181b 100%);
+  --color-stroke: var(--stoke);
+  --color-Gray: var(--Gray);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-body), system-ui, sans-serif;
+  font-family: var(--font-plus-jakarta), system-ui, sans-serif;
 }
 
 .dark {
@@ -190,6 +192,8 @@ body {
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.552 0.016 285.938);
+  --Gray: #999999;
+  --stroke: #dedee6;
 }
 
 @layer base {

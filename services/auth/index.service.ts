@@ -4,23 +4,29 @@ import { API } from '@/services/api';
 import { ResetPasswordPayload } from './types';
 
 async function ForgotPassword({ email }: ForgotPasswordFormData) {
-  return API.post('/auth/forgot-password', {
+  const response = await API.post('/auth/forgot-password', {
     email,
   });
+
+  return response.data;
 }
 
 async function login({ email, password }: LoginFormData) {
-  return API.post('/auth/login', {
+  const response = await API.post('/auth/login', {
     email,
     password,
   });
+
+  return response.data;
 }
 
 async function ResetPassword({ token, newPassword }: ResetPasswordPayload) {
-  return API.post('/auth/reset-password', {
+  const response = await API.post('/auth/reset-password', {
     token,
     newPassword,
   });
+
+  return response.data;
 }
 
 export const AuthService = {

@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import GroupCard from "@/components/dashboard/group/group-card";
-import GroupMemberList from "@/components/dashboard/group/group-member-list";
-import GroupsBoard from "@/components/dashboard/group/groups-board";
-import GroupsButtons from "@/components/dashboard/groups-buttons/buttons";
-import MemberCard from "@/components/member/member-card";
+import GroupCard from '@/components/dashboard/group/group-card';
+import GroupMemberList from '@/components/dashboard/group/group-member-list';
+import GroupsBoard from '@/components/dashboard/group/groups-board';
+import GroupsButtons from '@/components/dashboard/groups-buttons/buttons';
+import MemberCard from '@/components/member/member-card';
 // import { Button } from '@/components/ui/button';
 // import {
 //   Dialog,
@@ -16,15 +16,15 @@ import MemberCard from "@/components/member/member-card";
 //   DialogTrigger,
 // } from '@/components/ui/dialog';
 // import { FileSearchCorner, Users } from 'lucide-react';
-import { useState } from "react";
+import { useState } from 'react';
 
 const groupsList = [1, 3, 4, 5, 6, 7, 8, 9, 10];
 
 export default function GroupsPage() {
-  const [active, setActive] = useState("50/4");
+  const [active, setActive] = useState('50/4');
 
   return (
-    <div className="w-full  min-h-dvh flex flex-col items-center justify-start pt-4">
+    <div className='w-full min-h-dvh flex flex-col items-center justify-start'>
       <GroupsButtons />
 
       {/* <Dialog>
@@ -103,20 +103,20 @@ export default function GroupsPage() {
           <GroupCard key={group}>
             <GroupMemberList>
               <MemberCard
-                name="Edgar Barros"
-                email="edgarbarros@gamil.com"
+                name='Edgar Barros'
+                email='edgarbarros@gamil.com'
               ></MemberCard>
               <MemberCard
-                name="Edgar Barros"
-                email="edgarbarros@gamil.com"
+                name='Edgar Barros'
+                email='edgarbarros@gamil.com'
               ></MemberCard>
               <MemberCard
-                name="Edgar Barros"
-                email="edgarbarros@gamil.com"
+                name='Edgar Barros'
+                email='edgarbarros@gamil.com'
               ></MemberCard>
               <MemberCard
-                name="Edgar Barros"
-                email="edgarbarros@gamil.com"
+                name='Edgar Barros'
+                email='edgarbarros@gamil.com'
               ></MemberCard>
             </GroupMemberList>
           </GroupCard>

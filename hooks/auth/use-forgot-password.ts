@@ -1,6 +1,6 @@
 import { ForgotPasswordFormData } from '@/schemas/auth/forgot-password-schema';
 import { AuthService } from '@/services/auth/index.service';
-import { NestErrorResponse } from '@/types/api-error';
+import { IErrorResponse } from '@/shared/Interface/IErrorResponse';
 import { useMutation } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import toast from 'react-hot-toast';
@@ -15,7 +15,7 @@ export function useForgotPassword() {
         'Enviamos um e-mail para você. Verifique sua caixa de entrada.'
       );
     },
-    onError: (error: AxiosError<NestErrorResponse>) => {
+    onError: (error: AxiosError<IErrorResponse>) => {
       const message = error.response?.data?.message;
 
       const formattedMessage = Array.isArray(message)

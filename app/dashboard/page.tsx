@@ -1,40 +1,61 @@
-"use client";
+'use client';
 
-import DashboardCards from "@/components/dashboard/cards";
-import { FileSpreadsheet, GraduationCap, Users } from "lucide-react";
+import DashboardCard from '@/components/dashboard/card';
+import StatsCard from '@/components/dashboard/card-Stats';
+import { FileSpreadsheet, GraduationCap, Users } from 'lucide-react';
 
 export default function DashboardPage() {
   return (
-    <>
-      <div className="grid grid-cols-4 gap-4 mt-5 px-3">
-        <DashboardCards
-          title="Numbers of groups"
-          content="2"
-          icon={Users}
-          className="col-span-1"
-        >
-          <p className="text-xs text-green-600">1º phase</p>
-          <p className="text-xs text-[#FF2056]">2º phase</p>
-        </DashboardCards>
-
-        <DashboardCards title="Student numbers" content="5" icon={Users} />
-
-        <DashboardCards
-          title="Mentors numbers"
-          content="9"
-          icon={GraduationCap}
+    <div className='grid grid-cols-1 md:grid-cols-2 lg:md:grid-cols-4 gap-4'>
+      {/* Grupos */}
+      <DashboardCard icon={Users}>
+        <StatsCard
+          title='Número de grupos'
+          value={29}
+          extras={[
+            {
+              label: '1ª fase',
+              value: 29,
+              color: 'text-green-600',
+            },
+            {
+              label: '2ª fase',
+              value: 30,
+              color: 'text-[#FF2056]',
+            },
+          ]}
         />
+      </DashboardCard>
 
-        <DashboardCards
-          title="Reports"
-          content="00"
-          icon={FileSpreadsheet}
-          className="col-span-1"
-        >
-          <p className="text-xs text-green-600">Approved</p>
-          <p className="text-xs text-[#FF2056]">Failed</p>
-        </DashboardCards>
-      </div>
-    </>
+      {/* Estudantes */}
+      <DashboardCard icon={Users}>
+        <StatsCard title='Número de estudantes' value={5} />
+      </DashboardCard>
+
+      {/* Mentores */}
+      <DashboardCard icon={GraduationCap}>
+        <StatsCard title='Número de mentores' value={9} />
+      </DashboardCard>
+
+      {/* Relatórios */}
+      <DashboardCard icon={FileSpreadsheet}>
+        <StatsCard
+          title='Relatórios'
+          value='00'
+          extras={[
+            {
+              label: 'Aprovados',
+              value: 10,
+              color: 'text-green-600',
+            },
+            {
+              label: 'Reprovados',
+              value: 2,
+              color: 'text-[#FF2056]',
+            },
+          ]}
+        />
+      </DashboardCard>
+    </div>
   );
 }

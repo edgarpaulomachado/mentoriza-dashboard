@@ -1,11 +1,11 @@
-import type { LucideIcon } from "lucide-react";
+import type { LucideIcon } from 'lucide-react';
 import {
   Cog,
   FileSpreadsheet,
-  LayoutDashboard,
   GraduationCap,
+  LayoutDashboard,
   Users,
-} from "lucide-react";
+} from 'lucide-react';
 
 export interface SidebarItem {
   title: string;
@@ -20,41 +20,41 @@ export interface SidebarItem {
 
 export const itemsSidebar: SidebarItem[] = [
   {
-    title: "Dashboard",
-    url: "/dashboard",
+    title: 'Panel',
+    url: '/dashboard',
     icon: LayoutDashboard,
   },
   {
-    title: "Grupos",
-    url: "/dashboard/groups",
+    title: 'Grupos',
+    url: '/dashboard/groups',
     icon: Users,
   },
   {
-    title: "Estudantes",
-    url: "/dashboard/students",
+    title: 'Estudantes',
+    url: '/dashboard/students',
     icon: Users,
   },
   {
-    title: "Mentores",
-    url: "/dashboard/mentors",
+    title: 'Mentores',
+    url: '/dashboard/mentors',
     icon: GraduationCap,
   },
   {
-    title: "Reportes",
-    url: "/dashboard/reports",
+    title: 'Reportes',
+    url: '/dashboard/reports',
     icon: FileSpreadsheet,
   },
   {
-    title: "Configurações",
+    title: 'Configurações',
     icon: Cog,
     children: [
       {
-        title: "Indicadores",
-        url: "/dashboard/configurations/indicators",
+        title: 'Indicadores',
+        url: '/dashboard/configurations/indicators',
       },
       {
-        title: "Submissões",
-        url: "/dashboard/configurations/submissions",
+        title: 'Submissões',
+        url: '/dashboard/configurations/submissions',
       },
     ],
   },
