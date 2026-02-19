@@ -6,6 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu';
+import UserProfileDisplay from '../user-profile-display';
 
 interface MemberCardProps {
   name: string;
@@ -14,15 +15,9 @@ interface MemberCardProps {
 
 export default function MemberCard({ name, email }: MemberCardProps) {
   return (
-    <div className='w-full  flex justify-between items-center border rounded-lg p-2'>
+    <div className='w-full  flex justify-between items-center border rounded-[12px] bg-gray-100 p-2'>
       <div className='w-auto flex gap-2 items-center'>
-        <div className='p-2 border rounded-sm '>
-          <h1 className='font-bold'>AG</h1>
-        </div>
-        <div className='flex flex-col'>
-          <span className='text-lg font-medium'>{name}</span>
-          <span className='text-sm font-normal text-[#999999]'>{email}</span>
-        </div>
+        <UserProfileDisplay username={name} email={email} />
       </div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>

@@ -15,7 +15,7 @@ export function useResetPassword() {
         'Senha redefinida com sucesso! Já pode iniciar sessão com as novas credenciais.'
       );
 
-      router.replace('/login');
+      // router.replace('/login');
     },
 
     onError: (error: AxiosError<IErrorResponse>) => {

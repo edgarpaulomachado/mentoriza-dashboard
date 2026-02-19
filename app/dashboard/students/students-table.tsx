@@ -33,6 +33,7 @@ import { useActivateStudent } from '@/hooks/students/use-activate-student';
 import { useDeactivateStudent } from '@/hooks/students/use-deactivate-student';
 import { useDeleteStudent } from '@/hooks/students/use-delete-student';
 
+import UserProfileDisplay from '@/components/user-profile-display';
 import { cn } from '@/lib/utils';
 import { Student } from '@/services/students/Interfaces';
 
@@ -71,8 +72,13 @@ export default function StudentsTable({ students }: StudentsTableProps) {
         <TableBody>
           {students.map((student) => (
             <TableRow key={student.id}>
-              <TableCell className='font-medium'>{student.name}</TableCell>
-              <TableCell>{student.email}</TableCell>
+              <TableCell className='font-medium'>
+                <UserProfileDisplay
+                  username={student.user?.name}
+                  email={student.user?.email}
+                />
+              </TableCell>
+              <TableCell>{student.user?.email}</TableCell>
               <TableCell>{student.course || '-'}</TableCell>
               <TableCell>{student.class || '-'}</TableCell>
               <TableCell>{student.ra || '-'}</TableCell>

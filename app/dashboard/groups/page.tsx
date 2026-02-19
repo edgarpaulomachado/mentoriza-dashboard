@@ -18,7 +18,7 @@ import MemberCard from '@/components/member/member-card';
 // import { FileSearchCorner, Users } from 'lucide-react';
 import { useState } from 'react';
 
-const groupsList = [1, 3, 4, 5, 6, 7, 8, 9, 10];
+const groupsList = [1, 3, 4, 10];
 
 export default function GroupsPage() {
   const [active, setActive] = useState('50/4');

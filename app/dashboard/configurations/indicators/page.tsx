@@ -23,9 +23,11 @@ export default function IndicatorsPage() {
           </p>
         </div>
 
-        <Button onClick={() => setOpenCreateDialog(true)}>
-          <Plus /> Novo Indicador
-        </Button>
+        <div>
+          <Button onClick={() => setOpenCreateDialog(true)}>
+            <Plus /> Novo Indicador
+          </Button>
+        </div>
       </div>
 
       {isLoading ? (
@@ -34,7 +36,7 @@ export default function IndicatorsPage() {
         </div>
       ) : indicators.length === 0 ? (
         <div className='text-center py-16 border rounded-lg bg-muted/30'>
-          <p className='text-lg text-muted-foreground'>
+          <p className='text-sm text-muted-foreground'>
             Nenhum indicador criado ainda
           </p>
           <Button className='mt-6' onClick={() => setOpenCreateDialog(true)}>

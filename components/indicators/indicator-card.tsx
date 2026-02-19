@@ -40,7 +40,7 @@ export function IndicatorCard({ indicator }: IndicatorCardProps) {
 
   return (
     <>
-      <div className='border rounded-lg p-5 hover:border-primary transition-shadow bg-card'>
+      <div className='border rounded-lg p-3 hover:border-primary transition-shadow bg-card relative'>
         <div className='flex justify-between items-start mb-3'>
           <div></div>
           <DropdownMenu>
@@ -69,11 +69,14 @@ export function IndicatorCard({ indicator }: IndicatorCardProps) {
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
-        <h3 className='text-[16px]'>{indicator.title}</h3>
+
+        <h3 className='text-[12px] h-10 overflow-hidden text-clip'>
+          {indicator.title}
+        </h3>
         <div className='flex item-end justify-between mt-6'>
-          <p className='text-3xl font-bold text-primary'>{indicator.value}%</p>
+          <p className='text-xl font-bold text-primary '>{indicator.value}%</p>
           <div className='flex'>
-            <p className='text-sm text-primary text-right bg-purple-100 rounded-full w-fit p-2 px-4'>
+            <p className='text-[12px] text-primary text-right bg-purple-100 rounded-full w-fit h-fit p-1 px-2'>
               <strong>{indicator.type === 'max' ? 'Máximo' : 'Mínimo'}</strong>
             </p>
           </div>

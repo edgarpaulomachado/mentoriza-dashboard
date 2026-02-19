@@ -8,8 +8,8 @@ export default function GroupsButtons() {
   const [active, setActive] = useState('informática');
 
   return (
-    <div className='w-full h-12 flex justify-between items-center mt-2 px-2'>
-      <div className='w-67 flex items-center justify-center gap-2'>
+    <div className='w-full h-12 flex justify-between items-center mt-2'>
+      <div className='flex items-center justify-center gap-2'>
         <Button
           variant={active === 'informática' ? 'default' : 'secondary'}
           onClick={() => setActive('informática')}

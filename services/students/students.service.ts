@@ -66,6 +66,11 @@ async function changeGroup(id: number, data: LinkGroupDto) {
   return response.data;
 }
 
+async function deleteStudentCascade(id: number) {
+  const response = await API.delete(`/students/${id}/cascade`);
+  return response;
+}
+
 async function uploadStudentsCsv(file: File) {
   const formData = new FormData();
   formData.append('file', file);
@@ -92,4 +97,5 @@ export const StudentsService = {
   unlinkUser,
   changeGroup,
   uploadStudentsCsv,
+  deleteStudentCascade,
 };
