@@ -59,7 +59,7 @@ export function DashboardSidebar() {
                       <SidebarMenuButton
                         onClick={() => setOpenMenu(isOpen ? null : item.title)}
                         className={cn(
-                          'h-12.5 rounded-[12px] gap-3 font-medium justify-between border-l-2 border-transparent transition-all duration-200',
+                          'h-12.5 rounded-2xl gap-3 font-medium justify-between border-l-2 border-transparent transition-all duration-200',
                           isParentActive
                             ? 'bg-sidebar-primary text-sidebar-primary-foreground border-sidebar-primary'
                             : 'text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground'
@@ -114,7 +114,7 @@ export function DashboardSidebar() {
                     <SidebarMenuButton
                       asChild
                       className={cn(
-                        'h-12.5 rounded-[12px] gap-3 transition-all duration-200 font-medium border-l-2 border-transparent',
+                        'h-12.5 rounded-2xl gap-3 transition-all duration-200 font-medium border-l-2 border-transparent',
                         isParentActive
                           ? 'bg-sidebar-primary text-sidebar-primary-foreground border-sidebar-primary'
                           : 'text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground'
@@ -139,15 +139,18 @@ export function DashboardSidebar() {
             <SidebarMenuButton
               asChild
               className={cn(
-                'h-12.5 rounded-[12px] gap-3 transition-all duration-200 font-medium border-l-2 border-transparent',
+                'h-12.5 rounded-2xl gap-3 transition-all duration-200 font-medium border-l-2 border-transparent',
                 isProfileActive
                   ? 'bg-sidebar-primary text-sidebar-primary-foreground border-sidebar-primary'
                   : 'text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground'
               )}
             >
-              <Link href='/dashboard/my-profile'>
-                <UserIcon className='h-5 w-5' />
-                <span className='text-sm'>Meu Perfil</span>
+              <Link
+                href="/dashboard/my-profile"
+                className="flex items-center gap-3 w-full"
+              >
+                <UserIcon className="h-5 w-5" />
+                <span className="text-sm">Meu Perfil</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>

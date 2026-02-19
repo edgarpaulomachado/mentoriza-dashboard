@@ -30,7 +30,7 @@ export default function DashboardHeader() {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <div className='flex items-center gap-2 cursor-pointer'>
-            <div className='flex items-center justify-center w-[40px] h-[40px] border rounded-[12px]'>
+            <div className='flex items-center justify-center w-10 h-10 border rounded-[14px]'>
               <h1 className='font-semibold text-[16px] text-Gray'>
                 {getInitials(user?.username ?? 'A')}
               </h1>

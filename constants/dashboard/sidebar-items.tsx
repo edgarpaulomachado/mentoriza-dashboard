@@ -20,7 +20,7 @@ export interface SidebarItem {
 
 export const itemsSidebar: SidebarItem[] = [
   {
-    title: 'Panel',
+    title: 'Painel',
     url: '/dashboard',
     icon: LayoutDashboard,
   },
